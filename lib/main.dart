@@ -1,23 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:vangram/app/runner/app_env.dart';
+import 'package:vangram/app/runner/app_runner.dart';
 
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: false,
-      ),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
-}
+void main() => AppRunner(appEnv: AppEnv.test).run();
