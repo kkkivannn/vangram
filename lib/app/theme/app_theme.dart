@@ -7,5 +7,36 @@ abstract final class AppTheme {
   static final ThemeData _theme = ThemeData(
     scaffoldBackgroundColor: AppColors.kWhiteColor,
     useMaterial3: false,
+    textTheme: TextTheme(
+      titleLarge: TextStyle(
+        color: AppColors.kWhiteColor,
+        fontSize: 24,
+        fontWeight: FontWeight.w500,
+      ),
+      bodyMedium: TextStyle(
+        fontWeight: FontWeight.w300,
+        color: AppColors.kBlackColor,
+        fontSize: 16,
+      ),
+      bodyLarge: TextStyle(
+        fontWeight: FontWeight.w400,
+        color: AppColors.kBlackColor,
+        fontSize: 18,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        shape: MaterialStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+        ),
+        backgroundColor: MaterialStateProperty.all<Color>(AppColors.kPrimaryColor),
+        elevation: const MaterialStatePropertyAll(0),
+        minimumSize: const MaterialStatePropertyAll(
+          Size(double.infinity, 60),
+        ),
+      ),
+    ),
   );
 }

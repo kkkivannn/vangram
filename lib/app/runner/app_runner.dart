@@ -21,7 +21,7 @@ final class AppRunner {
             throw "$error, $name, $stackTrace";
           },
           onProgress: (name, progress) {
-            log("$name, $progress");
+            log("$name: $progress");
           },
         );
         runApp(App(appDependency: appDependency));

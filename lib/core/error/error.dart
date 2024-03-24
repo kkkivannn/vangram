@@ -4,7 +4,13 @@ typedef OnProgress = void Function(String name, String progress);
 final class Failure {}
 
 final class ServerFailure extends Failure {
-  final String error;
+  final String message;
 
-  ServerFailure({required this.error});
+  ServerFailure({required this.message});
+}
+
+final class CachedFailure extends Failure {
+  final String message;
+
+  CachedFailure({required this.message});
 }

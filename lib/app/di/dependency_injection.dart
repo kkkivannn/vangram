@@ -10,8 +10,8 @@ final class DependencyInjection extends InheritedWidget {
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
 
   static AppDependency of(BuildContext context) {
-    final di = context.dependOnInheritedWidgetOfExactType<DependencyInjection>();
-    assert(di == null, "Dependency not found");
+    final di = context.getInheritedWidgetOfExactType<DependencyInjection>();
+    assert(di != null, "Dependency not found");
     return di!.appDependency;
   }
 }

@@ -2,6 +2,8 @@ part of 'authorization_bloc.dart';
 
 sealed class AuthorizationEvent {}
 
-final class AuthorizationUserEvent extends AuthorizationEvent {}
+final class SendPhoneEvent extends AuthorizationEvent {
+  final SendPhoneModel sendPhoneModel;
 
-final class RegistrationUserEvent extends AuthorizationEvent {}
+  SendPhoneEvent({required this.sendPhoneModel});
+}

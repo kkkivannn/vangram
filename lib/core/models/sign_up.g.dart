@@ -10,7 +10,6 @@ SignUpModel _$SignUpModelFromJson(Map<String, dynamic> json) => SignUpModel(
       name: json['name'] as String,
       surname: json['surname'] as String,
       age: json['age'] as int,
-      phone: json['phone'] as String,
       photo: json['photo'] as String?,
     );
 
@@ -19,6 +18,5 @@ Map<String, dynamic> _$SignUpModelToJson(SignUpModel instance) =>
       'name': instance.name,
       'surname': instance.surname,
       'age': instance.age,
-      'phone': instance.phone,
       'photo': instance.photo,
     };

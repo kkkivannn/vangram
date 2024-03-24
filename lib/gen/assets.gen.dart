@@ -12,7 +12,28 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/like_me.png
+  /// File path: assets/icons/Calendar.svg
+  String get calendar => 'assets/icons/Calendar.svg';
+
+  /// File path: assets/icons/Call.svg
+  String get call => 'assets/icons/Call.svg';
+
+  /// File path: assets/icons/Image.svg
+  String get image => 'assets/icons/Image.svg';
+
+  /// File path: assets/icons/Lock.svg
+  String get lock => 'assets/icons/Lock.svg';
+
+  /// File path: assets/icons/Right.svg
+  String get right => 'assets/icons/Right.svg';
+
+  /// File path: assets/icons/RightCircle.svg
+  String get rightCircle => 'assets/icons/RightCircle.svg';
+
+  /// File path: assets/icons/User.svg
+  String get user => 'assets/icons/User.svg';
+
+  /// File path: assets/icons/like_me.svg
   String get likeMe => 'assets/icons/like_me.svg';
 
   /// File path: assets/icons/share_moment.svg
@@ -22,7 +43,18 @@ class $AssetsIconsGen {
   String get shareWithFriends => 'assets/icons/share_with_friends.svg';
 
   /// List of all assets
-  List<dynamic> get values => [likeMe, shareMoment, shareWithFriends];
+  List<String> get values => [
+        calendar,
+        call,
+        image,
+        lock,
+        right,
+        rightCircle,
+        user,
+        likeMe,
+        shareMoment,
+        shareWithFriends
+      ];
 }
 
 class $AssetsImagesGen {

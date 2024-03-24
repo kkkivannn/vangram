@@ -8,4 +8,10 @@ abstract final class AppColors {
   static Color get kWhiteColor => const Color(0xffffffff);
 
   static Color get kSecondaryColor => const Color(0xffE3C6FF);
+
+  static Color get kThirdColor => const Color(0xffFF4F14);
+
+  static Color get kHintColor => const Color(0xffCFD0CD);
+
+  static Color get kGreyColor => const Color(0xffF9F9F9);
 }
