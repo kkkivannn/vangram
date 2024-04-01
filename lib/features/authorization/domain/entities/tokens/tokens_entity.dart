@@ -6,7 +6,7 @@ base class TokensEntity {
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
   @JsonKey(name: 'has_profile')
-  final bool hasProfile;
+  final bool? hasProfile;
 
   TokensEntity({
     required this.accessToken,

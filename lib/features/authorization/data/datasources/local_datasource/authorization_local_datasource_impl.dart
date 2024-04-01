@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:vangram/core/config/config.dart';
 import 'package:vangram/features/authorization/data/datasources/local_datasource/authorization_local_datasource.dart';
-import 'package:vangram/features/authorization/data/models/tokens_model.dart';
+import 'package:vangram/features/authorization/data/models/tokens/tokens_model.dart';
 import 'package:vangram/features/authorization/domain/entities/tokens/tokens_entity.dart';
 
 final class AuthorizationLocalDatasourceImpl implements AuthorizationLocalDatasource {

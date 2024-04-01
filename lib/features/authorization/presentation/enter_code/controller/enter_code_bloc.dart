@@ -20,7 +20,7 @@ class EnterCodeBloc extends Bloc<EnterCodeEvent, EnterCodeState> {
       data.fold(
         (error) => emit(state.copyWith(status: EnterCodeStatus.error)),
         (data) {
-          if (!data.hasProfile) {
+          if (data.hasProfile == false) {
             emit(state.copyWith(status: EnterCodeStatus.notHaveAccount));
           } else {
             emit(state.copyWith(status: EnterCodeStatus.loaded));

@@ -16,6 +16,12 @@ import 'package:vangram/features/authorization/domain/repositories/authorization
 import 'package:vangram/features/authorization/domain/usecases/send_code.dart';
 import 'package:vangram/features/authorization/domain/usecases/send_phone.dart';
 import 'package:vangram/features/authorization/domain/usecases/sign_up.dart';
+import 'package:vangram/features/home/data/datasources/remote_datasource/home_remote_datasource.dart';
+import 'package:vangram/features/home/data/datasources/remote_datasource/home_remote_datasource_impl.dart';
+import 'package:vangram/features/home/data/repositories/home_repository_impl.dart';
+import 'package:vangram/features/home/domain/repositories/home_repository.dart';
+import 'package:vangram/features/home/domain/usecases/get_posts.dart';
+import 'package:vangram/features/home/domain/usecases/get_profile.dart';
 
 final class AppDependency {
   late final AppEnv appEnv;
@@ -23,10 +29,14 @@ final class AppDependency {
   late final AuthorizationLocalDatasource authorizationLocalDatasource;
   late final Dio dio;
   late final AuthorizationRemoteDatasource authorizationRemoteDatasource;
+  late final HomeRemoteDatasource homeRemoteDatasource;
   late final AuthorizationRepository authorizationRepository;
+  late final HomeRepository homeRepository;
   late final SignUp signUp;
   late final SendCode sendCode;
   late final SendPhone sendPhone;
+  late final GetPosts getPosts;
+  late final GetProfile getProfile;
 
   AppDependency({required this.appEnv});
 
@@ -58,8 +68,7 @@ final class AppDependency {
           BaseOptions(
             baseUrl: Config.baseUrl,
           ),
-        )
-          ..interceptors.add(
+        )..interceptors.add(
             PrettyDioLogger(
               requestHeader: true,
               requestBody: true,
@@ -69,12 +78,13 @@ final class AppDependency {
               maxWidth: 90,
               responseHeader: false,
             ),
-          )
-          ..interceptors.add(
-            AuthorizationInterceptor(
-              authorizationLocalDatasource: authorizationLocalDatasource,
-            ),
           );
+        dio.interceptors.add(
+          AuthorizationInterceptor(
+            authorizationLocalDatasource: authorizationLocalDatasource,
+            dio: dio,
+          ),
+        );
       } else {
         dio = Dio(
           BaseOptions(
@@ -90,7 +100,9 @@ final class AppDependency {
 
     try {
       authorizationRemoteDatasource = AuthorizationRemoteDatasourceImpl(dio: dio);
+      homeRemoteDatasource = HomeRemoteDatasourceImpl(dio: dio);
       onProgress("AuthorizationRemoteDatasource", "Success");
+      onProgress("HomeRemoteDatasource", "Success");
     } on Object catch (error, stackTrace) {
       onError('error', error, stackTrace);
     }
@@ -100,7 +112,9 @@ final class AppDependency {
         authorizationDatasource: authorizationRemoteDatasource,
         authorizationLocalDatasource: authorizationLocalDatasource,
       );
+      homeRepository = HomeRepositoryImpl(homeRemoteDatasource: homeRemoteDatasource);
       onProgress("AuthorizationRepository", "Success");
+      onProgress("HomeRepository", "Success");
     } on Object catch (error, stackTrace) {
       onError('error', error, stackTrace);
     }
@@ -109,9 +123,13 @@ final class AppDependency {
       signUp = SignUp(authorizationRepository: authorizationRepository);
       sendCode = SendCode(authorizationRepository: authorizationRepository);
       sendPhone = SendPhone(authorizationRepository: authorizationRepository);
+      getPosts = GetPosts(homeRepository: homeRepository);
+      getProfile = GetProfile(homeRepository: homeRepository);
       onProgress("SignUp", "Success");
       onProgress("SendCode", "Success");
       onProgress("SendPhone", "Success");
+      onProgress("getPosts", "Success");
+      onProgress("getProfile", "Success");
     } on Object catch (error, stackTrace) {
       onError('error', error, stackTrace);
     }

@@ -7,6 +7,11 @@ abstract final class AppTheme {
   static final ThemeData _theme = ThemeData(
     scaffoldBackgroundColor: AppColors.kWhiteColor,
     useMaterial3: false,
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      backgroundColor: AppColors.kWhiteColor,
+      centerTitle: true,
+    ),
     textTheme: TextTheme(
       titleLarge: TextStyle(
         color: AppColors.kWhiteColor,
@@ -14,7 +19,7 @@ abstract final class AppTheme {
         fontWeight: FontWeight.w500,
       ),
       bodyMedium: TextStyle(
-        fontWeight: FontWeight.w300,
+        fontWeight: FontWeight.w400,
         color: AppColors.kBlackColor,
         fontSize: 16,
       ),

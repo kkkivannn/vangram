@@ -9,7 +9,7 @@ part of 'tokens_model.dart';
 TokensModel _$TokensModelFromJson(Map<String, dynamic> json) => TokensModel(
       accessToken: json['access_token'] as String,
       refreshToken: json['refresh_token'] as String,
-      hasProfile: json['has_profile'] as bool,
+      hasProfile: json['has_profile'] as bool?,
     );
 
 Map<String, dynamic> _$TokensModelToJson(TokensModel instance) =>

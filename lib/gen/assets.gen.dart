@@ -9,8 +9,21 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsFontsGen {
+  const $AssetsFontsGen();
+
+  /// File path: assets/fonts/Arizonia-Regular.ttf
+  String get arizoniaRegular => 'assets/fonts/Arizonia-Regular.ttf';
+
+  /// List of all assets
+  List<String> get values => [arizoniaRegular];
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
+
+  /// File path: assets/icons/Bell.svg
+  String get bell => 'assets/icons/Bell.svg';
 
   /// File path: assets/icons/Calendar.svg
   String get calendar => 'assets/icons/Calendar.svg';
@@ -18,17 +31,44 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Call.svg
   String get call => 'assets/icons/Call.svg';
 
+  /// File path: assets/icons/Category.svg
+  String get category => 'assets/icons/Category.svg';
+
+  /// File path: assets/icons/Comment.svg
+  String get comment => 'assets/icons/Comment.svg';
+
+  /// File path: assets/icons/FilledCategory.svg
+  String get filledCategory => 'assets/icons/FilledCategory.svg';
+
+  /// File path: assets/icons/FilledMessage.svg
+  String get filledMessage => 'assets/icons/FilledMessage.svg';
+
+  /// File path: assets/icons/FilledSettings.svg
+  String get filledSettings => 'assets/icons/FilledSettings.svg';
+
+  /// File path: assets/icons/FilledUser.svg
+  String get filledUser => 'assets/icons/FilledUser.svg';
+
+  /// File path: assets/icons/Heart.svg
+  String get heart => 'assets/icons/Heart.svg';
+
   /// File path: assets/icons/Image.svg
   String get image => 'assets/icons/Image.svg';
 
   /// File path: assets/icons/Lock.svg
   String get lock => 'assets/icons/Lock.svg';
 
+  /// File path: assets/icons/Message.svg
+  String get message => 'assets/icons/Message.svg';
+
   /// File path: assets/icons/Right.svg
   String get right => 'assets/icons/Right.svg';
 
   /// File path: assets/icons/RightCircle.svg
   String get rightCircle => 'assets/icons/RightCircle.svg';
+
+  /// File path: assets/icons/Settings.svg
+  String get settings => 'assets/icons/Settings.svg';
 
   /// File path: assets/icons/User.svg
   String get user => 'assets/icons/User.svg';
@@ -44,12 +84,22 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
+        bell,
         calendar,
         call,
+        category,
+        comment,
+        filledCategory,
+        filledMessage,
+        filledSettings,
+        filledUser,
+        heart,
         image,
         lock,
+        message,
         right,
         rightCircle,
+        settings,
         user,
         likeMe,
         shareMoment,
@@ -70,6 +120,7 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
+  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }

@@ -36,7 +36,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    # - assets/fonts/
+    - assets/fonts/
     - assets/icons/
     - assets/images/
     - .env
+  fonts:
+    - family: Arizonia
+      fonts:
+        - asset: assets/fonts/Arizonia-Regular.ttf

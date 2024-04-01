@@ -52,4 +52,19 @@ final class AuthorizationRepositoryImpl implements AuthorizationRepository {
       return Left(ServerFailure(message: error.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, TokensEntity>> refreshToken() async {
+    try {
+      final data = await _authorizationDatasource.refreshTokens();
+      try {
+        await _authorizationLocalDatasource.saveTokens(tokens: data);
+      } catch (error) {
+        return Left(CachedFailure(message: error.toString()));
+      }
+      return Right(data);
+    } catch (error) {
+      return Left(ServerFailure(message: error.toString()));
+    }
+  }
 }

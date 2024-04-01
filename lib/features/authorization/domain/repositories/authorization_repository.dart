@@ -11,4 +11,6 @@ abstract interface class AuthorizationRepository {
   Future<Either<Failure, TokensEntity>> sendCode({required SendCodeModel sendCodeModel});
 
   Future<Either<Failure, void>> sendPhone({required SendPhoneModel sendPhoneModel});
+
+  Future<Either<Failure, TokensEntity>> refreshToken();
 }

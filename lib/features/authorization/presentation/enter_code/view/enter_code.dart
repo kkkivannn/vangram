@@ -43,7 +43,7 @@ class _EnterCodePageState extends State<EnterCodePage> {
         if (state.status == EnterCodeStatus.notHaveAccount) {
           context.goNamed(Routes.registration);
         } else {
-          context.goNamed(Routes.home);
+          context.goNamed(Routes.posts);
         }
       },
       child: Scaffold(

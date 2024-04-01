@@ -4,7 +4,7 @@ import 'package:vangram/core/models/send_code_model.dart';
 import 'package:vangram/core/models/send_phone_model.dart';
 import 'package:vangram/core/models/sign_up.dart';
 import 'package:vangram/features/authorization/data/datasources/remote_datasource/authorization_remote_datasource.dart';
-import 'package:vangram/features/authorization/data/models/tokens_model.dart';
+import 'package:vangram/features/authorization/data/models/tokens/tokens_model.dart';
 
 final class AuthorizationRemoteDatasourceImpl implements AuthorizationRemoteDatasource {
   final Dio _dio;
@@ -41,7 +41,7 @@ final class AuthorizationRemoteDatasourceImpl implements AuthorizationRemoteData
   @override
   Future<void> sendPhone({required SendPhoneModel sendPhoneModel}) async {
     try {
-      _dio.post(Endpoints.sendNumber.path, data: sendPhoneModel.toJson());
+      await _dio.post(Endpoints.sendNumber.path, data: sendPhoneModel.toJson());
     } on DioException catch (error) {
       throw error.response?.data;
     }
@@ -53,6 +53,16 @@ final class AuthorizationRemoteDatasourceImpl implements AuthorizationRemoteData
       return await _dio.fetch(options);
     } catch (_) {
       rethrow;
+    }
+  }
+
+  @override
+  Future<TokensModel> refreshTokens() async {
+    try {
+      final Response response = await _dio.post(Endpoints.refreshToken.path);
+      return TokensModel.fromJson(response.data);
+    } on DioException catch (error) {
+      throw error.response?.data;
     }
   }
 }
