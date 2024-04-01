@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vangram/core/usecase/usecase.dart';
 import 'package:vangram/features/home/domain/entities/post/post_entity.dart';
 import 'package:vangram/features/home/domain/usecases/get_posts.dart';
