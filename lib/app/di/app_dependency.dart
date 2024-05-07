@@ -20,8 +20,10 @@ import 'package:vangram/features/home/data/datasources/remote_datasource/home_re
 import 'package:vangram/features/home/data/datasources/remote_datasource/home_remote_datasource_impl.dart';
 import 'package:vangram/features/home/data/repositories/home_repository_impl.dart';
 import 'package:vangram/features/home/domain/repositories/home_repository.dart';
+import 'package:vangram/features/home/domain/usecases/create_post.dart';
 import 'package:vangram/features/home/domain/usecases/get_posts.dart';
 import 'package:vangram/features/home/domain/usecases/get_profile.dart';
+import 'package:vangram/features/home/domain/usecases/get_user_posts.dart';
 
 final class AppDependency {
   late final AppEnv appEnv;
@@ -37,6 +39,8 @@ final class AppDependency {
   late final SendPhone sendPhone;
   late final GetPosts getPosts;
   late final GetProfile getProfile;
+  late final CreatePost createPost;
+  late final GetUserPosts getUserPosts;
 
   AppDependency({required this.appEnv});
 
@@ -125,11 +129,15 @@ final class AppDependency {
       sendPhone = SendPhone(authorizationRepository: authorizationRepository);
       getPosts = GetPosts(homeRepository: homeRepository);
       getProfile = GetProfile(homeRepository: homeRepository);
+      createPost = CreatePost(homeRepository: homeRepository);
+      getUserPosts = GetUserPosts(homeRepository: homeRepository);
       onProgress("SignUp", "Success");
       onProgress("SendCode", "Success");
       onProgress("SendPhone", "Success");
       onProgress("getPosts", "Success");
       onProgress("getProfile", "Success");
+      onProgress("createPost", "Success");
+      onProgress('getUserPosts', 'Success');
     } on Object catch (error, stackTrace) {
       onError('error', error, stackTrace);
     }

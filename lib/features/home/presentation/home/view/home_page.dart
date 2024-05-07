@@ -14,93 +14,90 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _navigationShell,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18).copyWith(bottom: 10),
-        child: SafeArea(
-          top: false,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey[400]!,
-                  blurRadius: 2,
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: AppColors.kWhiteColor,
+        type: BottomNavigationBarType.fixed,
+        useLegacyColorScheme: false,
+        elevation: 0,
+        onTap: (value) => _navigationShell.goBranch(value, initialLocation: true),
+        items: [
+          BottomNavigationBarItem(
+            icon: SizedBox(
+              child: SvgPicture.asset(
+                _navigationShell.currentIndex == 0 ? Assets.icons.filledCategory : Assets.icons.category,
+                height: 30,
+                colorFilter: ColorFilter.mode(
+                  AppColors.kPrimaryColor,
+                  BlendMode.srcIn,
                 ),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: BottomNavigationBar(
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
-                backgroundColor: AppColors.kWhiteColor,
-                type: BottomNavigationBarType.fixed,
-                useLegacyColorScheme: false,
-                elevation: 10,
-                onTap: (value) => _navigationShell.goBranch(value, initialLocation: true),
-                items: [
-                  BottomNavigationBarItem(
-                    icon: SizedBox(
-                      height: 40,
-                      child: SvgPicture.asset(
-                        _navigationShell.currentIndex == 0 ? Assets.icons.filledCategory : Assets.icons.category,
-                        height: 30,
-                        colorFilter: ColorFilter.mode(
-                          AppColors.kPrimaryColor,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                    ),
-                    label: "",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: SizedBox(
-                      height: 40,
-                      child: SvgPicture.asset(
-                        height: 30,
-                        _navigationShell.currentIndex == 1 ? Assets.icons.filledMessage : Assets.icons.message,
-                        colorFilter: ColorFilter.mode(
-                          AppColors.kSecondaryColor,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                    ),
-                    label: "",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: SizedBox(
-                      height: 40,
-                      child: SvgPicture.asset(
-                        height: 30,
-                        _navigationShell.currentIndex == 2 ? Assets.icons.filledUser : Assets.icons.user,
-                        colorFilter: ColorFilter.mode(
-                          AppColors.kThirdColor,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                    ),
-                    label: "",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: SizedBox(
-                      height: 40,
-                      child: SvgPicture.asset(
-                        height: 30,
-                        _navigationShell.currentIndex == 3 ? Assets.icons.filledSettings : Assets.icons.settings,
-                        colorFilter: ColorFilter.mode(
-                          AppColors.kFourColor,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                    ),
-                    label: "",
-                  ),
-                ],
               ),
             ),
+            label: "",
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: SizedBox(
+              child: SvgPicture.asset(
+                height: 30,
+                _navigationShell.currentIndex == 1 ? Assets.icons.filledMessage : Assets.icons.message,
+                colorFilter: ColorFilter.mode(
+                  AppColors.kSecondaryColor,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: SizedBox(
+              child: SvgPicture.asset(
+                height: 30,
+                _navigationShell.currentIndex == 2 ? Assets.icons.filledUser : Assets.icons.user,
+                colorFilter: ColorFilter.mode(
+                  AppColors.kThirdColor,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: SizedBox(
+              child: SvgPicture.asset(
+                height: 30,
+                _navigationShell.currentIndex == 3 ? Assets.icons.filledSettings : Assets.icons.settings,
+                colorFilter: ColorFilter.mode(
+                  AppColors.kFourColor,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+            label: "",
+          ),
+        ],
       ),
+      // bottomNavigationBar: Padding(
+      //   padding: const EdgeInsets.symmetric(horizontal: 18).copyWith(bottom: 10),
+      //   child: SafeArea(
+      //     top: false,
+      //     child: Container(
+      //       decoration: BoxDecoration(
+      //         borderRadius: BorderRadius.circular(20),
+      //         boxShadow: [
+      //           BoxShadow(
+      //             color: Colors.grey[400]!,
+      //             blurRadius: 2,
+      //           ),
+      //         ],
+      //       ),
+      //       child: ClipRRect(
+      //         borderRadius: BorderRadius.circular(20),
+      //         child:
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

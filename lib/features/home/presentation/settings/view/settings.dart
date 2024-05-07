@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
+import 'package:vangram/core/config/config.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -21,6 +23,22 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
         ),
+        SliverFillRemaining(
+            child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: Center(
+            child: ElevatedButton(
+              onPressed: () {
+                const storage = FlutterSecureStorage();
+                storage.delete(key: Config.userTokens);
+              },
+              child: Text(
+                'Выйти',
+                style: theme.textTheme.bodyMedium!.copyWith(color: AppColors.kWhiteColor),
+              ),
+            ),
+          ),
+        )),
       ],
     );
   }

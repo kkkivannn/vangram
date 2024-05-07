@@ -7,9 +7,9 @@ part of 'post_model.dart';
 // **************************************************************************
 
 PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       photo: json['photo'] as String,
-      countLikes: json['count_likes'] as int,
+      countLikes: (json['count_likes'] as num).toInt(),
       body: json['body'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
       uploadedAt: json['uploaded_at'],

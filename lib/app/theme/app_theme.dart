@@ -11,6 +11,9 @@ abstract final class AppTheme {
       elevation: 0,
       backgroundColor: AppColors.kWhiteColor,
       centerTitle: true,
+      iconTheme: IconThemeData(
+        color: AppColors.kPrimaryColor,
+      ),
     ),
     textTheme: TextTheme(
       titleLarge: TextStyle(

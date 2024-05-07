@@ -7,8 +7,6 @@ abstract final class Routes {
 
   static String get enterCode => "enterCode";
 
-  static String get home => "home";
-
   static String get posts => "posts";
 
   static String get chats => 'chats';
@@ -16,4 +14,10 @@ abstract final class Routes {
   static String get profile => 'profile';
 
   static String get settings => 'settings';
+
+  static String get createNewPost => 'createNewPost';
+
+  static String get createChat => "createChat";
+
+  static String get test => 'test';
 }

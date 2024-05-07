@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
@@ -13,18 +14,26 @@ import 'package:vangram/features/authorization/presentation/registration/view/re
 import 'package:vangram/features/authorization/presentation/welcome/view/welcome_page.dart';
 import 'package:vangram/features/home/presentation/chats/controller/chats_bloc.dart';
 import 'package:vangram/features/home/presentation/chats/view/chats.dart';
+import 'package:vangram/features/home/presentation/chats/widgets/pages/create_chat/controller/create_chat_bloc.dart';
+import 'package:vangram/features/home/presentation/chats/widgets/pages/create_chat/view/create_chat.dart';
 import 'package:vangram/features/home/presentation/home/controller/home_bloc.dart';
 import 'package:vangram/features/home/presentation/home/view/home_page.dart';
 import 'package:vangram/features/home/presentation/posts/controller/posts_cubit.dart';
 import 'package:vangram/features/home/presentation/posts/view/posts.dart';
+import 'package:vangram/features/home/presentation/posts/widgets/pages/create_new_post/controller/create_new_post_bloc.dart';
+import 'package:vangram/features/home/presentation/posts/widgets/pages/create_new_post/view/create_new_post.dart';
 import 'package:vangram/features/home/presentation/profile/controller/profile_bloc.dart';
 import 'package:vangram/features/home/presentation/profile/view/profile.dart';
 import 'package:vangram/features/home/presentation/settings/controller/settings_bloc.dart';
 import 'package:vangram/features/home/presentation/settings/view/settings.dart';
 
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+
 abstract class AppRouter {
   static GoRouter router = GoRouter(
+    debugLogDiagnostics: true,
     initialLocation: '/welcome',
+    navigatorKey: _rootNavigatorKey,
     redirect: (context, state) async {
       if (state.location == '/welcome') {
         const storage = FlutterSecureStorage();
@@ -52,6 +61,24 @@ abstract class AppRouter {
                   )..getPosts(),
                   child: const PostsPage(),
                 ),
+                routes: [
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: 'create_new_post',
+                    name: Routes.createNewPost,
+                    builder: (context, state) => BlocProvider<PostsCubit>.value(
+                      value: state.extra as PostsCubit,
+                      child: BlocProvider(
+                        create: (context) => CreateNewPostBloc(
+                          createPost: DependencyInjection.of(context).createPost,
+                        ),
+                        child: CreateNewPostPage(
+                          key: state.pageKey,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -75,6 +102,7 @@ abstract class AppRouter {
                 builder: (context, state) => BlocProvider(
                   create: (context) => ProfileBloc(
                     getProfile: DependencyInjection.of(context).getProfile,
+                    getUserPosts: DependencyInjection.of(context).getUserPosts,
                   )..add(GetProfileEvent()),
                   child: const ProfilePage(),
                 ),
@@ -94,6 +122,15 @@ abstract class AppRouter {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/create_chat',
+        name: Routes.createChat,
+        builder: (context, state) => BlocProvider(
+          create: (context) => CreateChatBloc(),
+          child: const CreateChatPage(),
+        ),
       ),
       GoRoute(
         path: "/welcome",
@@ -134,4 +171,13 @@ abstract class AppRouter {
       ),
     ],
   );
+}
+
+class TestPage extends StatelessWidget {
+  const TestPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:vangram/core/error/error.dart';
+import 'package:vangram/core/models/post/create_post_model.dart';
 import 'package:vangram/features/home/data/datasources/remote_datasource/home_remote_datasource.dart';
 import 'package:vangram/features/home/domain/entities/post/post_entity.dart';
 import 'package:vangram/features/home/domain/entities/profile/profile_entity.dart';
@@ -25,6 +26,26 @@ final class HomeRepositoryImpl implements HomeRepository {
   Future<Either<Failure, ProfileEntity>> getProfile() async {
     try {
       final data = await _homeRemoteDatasource.getProfile();
+      return Right(data);
+    } catch (error) {
+      return Left(ServerFailure(message: error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> createPost({required CreatePostModel post}) async {
+    try {
+      final data = await _homeRemoteDatasource.createPost(post: post);
+      return Right(data);
+    } catch (error) {
+      return Left(ServerFailure(message: error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<PostEntity>>> getUserPosts() async {
+    try {
+      final data = await _homeRemoteDatasource.getUserPosts();
       return Right(data);
     } catch (error) {
       return Left(ServerFailure(message: error.toString()));

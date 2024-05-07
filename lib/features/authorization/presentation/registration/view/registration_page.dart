@@ -52,7 +52,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return BlocListener<RegistrationBloc, RegistrationState>(
       listener: (context, state) {
         if (state.status == RegStatus.loaded) {
-          context.goNamed(Routes.home);
+          context.goNamed(Routes.posts);
         }
       },
       child: Scaffold(

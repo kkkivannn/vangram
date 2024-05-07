@@ -10,31 +10,36 @@ final enterNumberFormKey = GlobalKey<FormState>();
 final registrationFormKey = GlobalKey<FormState>();
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    Key? key,
-    this.prefixIcon,
-    this.hintText,
-    this.suffixIcon,
-    this.onTap,
-    this.enabled,
-    this.inputFormatter,
-    this.controller,
-    this.readOnly = false,
-    this.validator = _validator,
-  }) : super(key: key);
+  const CustomTextField(
+      {Key? key,
+      this.prefixIcon,
+      this.hintText,
+      this.suffixIcon,
+      this.onTap,
+      this.enabled,
+      this.inputFormatter,
+      this.controller,
+      this.readOnly = false,
+      this.validator = _validator,
+      this.maxLines,
+      this.minLines,
+      this.autoFocus = false})
+      : super(key: key);
 
-  const CustomTextField.number({
-    this.prefixIcon,
-    this.suffixIcon,
-    this.hintText,
-    this.onTap,
-    this.enabled,
-    this.readOnly = false,
-    this.inputFormatter,
-    this.controller,
-    this.validator = _validatorNumber,
-    super.key,
-  });
+  const CustomTextField.number(
+      {this.prefixIcon,
+      this.suffixIcon,
+      this.hintText,
+      this.onTap,
+      this.enabled,
+      this.readOnly = false,
+      this.inputFormatter,
+      this.controller,
+      this.validator = _validatorNumber,
+      super.key,
+      this.maxLines,
+      this.minLines,
+      this.autoFocus = false});
 
   const CustomTextField.age({
     this.prefixIcon,
@@ -47,6 +52,9 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.validator = _validatorAge,
     super.key,
+    this.maxLines,
+    this.minLines,
+    this.autoFocus = false,
   });
 
   final Widget? prefixIcon;
@@ -58,10 +66,16 @@ class CustomTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatter;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final int? maxLines;
+  final int? minLines;
+  final bool autoFocus;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: autoFocus,
+      maxLines: maxLines,
+      minLines: minLines,
       readOnly: readOnly,
       controller: controller,
       cursorColor: AppColors.kPrimaryColor,

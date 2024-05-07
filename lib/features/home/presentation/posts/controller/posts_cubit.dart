@@ -14,7 +14,9 @@ class PostsCubit extends Cubit<PostsState> {
 
   Future<void> getPosts() async {
     try {
-      emit(PostsLoading());
+      if (state is! PostsLoaded) {
+        emit(PostsLoading());
+      }
       final data = await _getPosts.call(params: NoParams());
       data.fold(
         (error) => emit(PostsError(message: error.toString())),

@@ -1,18 +1,20 @@
-name: Analysis # Название пайплайна
+name: Analysis
 
-on: [ push, pull_request ] # События, при которых будет запускаться пайплайн (push и pull request)
+on: [ push, pull_request ]
 
-jobs: # Список jobs, которые будут выполняться пайплайном
-  build: # Название job
-    runs-on: ubuntu-latest # Операционная система, на которой будет выполняться job
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    steps: # Список шагов, которые будут выполняться job
-      - uses: actions/checkout@v2 # Шаг checkout репозитория
+    steps:
+      - uses: actions/checkout@v2
 
-      - name: Set up Flutter # Шаг установки Flutter
-        uses: subosito/flutter-action@v1 # Используемый action для установки Flutter
-        with: # Параметры action
-          flutter-version: '3.19.4' # Укажите версию Flutter, которую вы используете в проекте
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '3.19.4'
 
-      - name: Analysis # Шаг анализа кода
-        run: flutter analyze # Команда для запуска анализа кода
+      - name: Analysis
+        run: flutter analyze
+
+
