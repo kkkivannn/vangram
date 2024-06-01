@@ -18,8 +18,7 @@ import 'package:vangram/features/chats/presentation/chats/controller/chats_bloc.
 import 'package:vangram/features/chats/presentation/chats/view/chats.dart';
 import 'package:vangram/features/chats/presentation/create_new_chat/controller/create_chat_bloc.dart';
 import 'package:vangram/features/chats/presentation/create_new_chat/view/create_chat.dart';
-import 'package:vangram/features/home/presentation/home/controller/home_bloc.dart';
-import 'package:vangram/features/home/presentation/home/view/home_page.dart';
+import 'package:vangram/features/home/home_page.dart';
 import 'package:vangram/features/posts/presentation/create_new_post/controller/create_new_post_bloc.dart';
 import 'package:vangram/features/posts/presentation/create_new_post/view/create_new_post.dart';
 import 'package:vangram/features/posts/presentation/posts/controller/posts_cubit.dart';
@@ -47,10 +46,7 @@ abstract class AppRouter {
     },
     routes: [
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) => BlocProvider(
-          create: (context) => HomeBloc(),
-          child: HomePage(navigationShell: navigationShell),
-        ),
+        builder: (context, state, navigationShell) => HomePage(navigationShell: navigationShell),
         branches: [
           StatefulShellBranch(
             routes: [

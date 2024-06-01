@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vangram/core/helpers/models/sign_up.dart';
+import 'package:vangram/core/helpers/models/sign_up/sign_up.dart';
 import 'package:vangram/features/authorization/domain/usecases/sign_up.dart';
 
 part 'registration_event.dart';

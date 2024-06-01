@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
+import 'package:vangram/core/utils/extension/extension_on_context.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({Key? key, required this.onTap}) : super(key: key);

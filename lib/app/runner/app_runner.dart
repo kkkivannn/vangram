@@ -1,10 +1,12 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vangram/app/di/app_dependency.dart';
 import 'package:vangram/app/runner/app.dart';
 import 'package:vangram/app/runner/app_env.dart';
+import 'package:vangram/core/utils/bloc/app_bloc_observer.dart';
+import 'package:vangram/core/utils/logger/logger.dart';
 
 final class AppRunner {
   final AppEnv _appEnv;
@@ -12,29 +14,32 @@ final class AppRunner {
   AppRunner({required AppEnv appEnv}) : _appEnv = appEnv;
 
   Future<void> run() async {
-    runZonedGuarded(
-      () async {
-        await _initApp();
-        final appDependency = AppDependency(appEnv: _appEnv);
-        await appDependency.init(
-          onError: (error, name, stackTrace) {
-            throw "$error, $name, $stackTrace";
-          },
-          onProgress: (name, progress) {
-            log("$name: $progress");
-          },
-        );
-        runApp(App(appDependency: appDependency));
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          WidgetsBinding.instance.allowFirstFrame();
-        });
-      },
-      (error, stack) => log(error.toString(), stackTrace: stack, error: error),
+    logger.runLogging(
+      () => runZonedGuarded(
+        () async => await _initApp(),
+        (error, stackTrace) => logger.error('Error:', error: error, stackTrace: stackTrace),
+      ),
     );
   }
 
   Future<void> _initApp() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    WidgetsBinding.instance.deferFirstFrame();
+    final binding = WidgetsFlutterBinding.ensureInitialized();
+    binding.deferFirstFrame();
+    FlutterError.onError = logger.logFlutterError;
+    WidgetsBinding.instance.platformDispatcher.onError = logger.logPlatformDispatcherError;
+    Bloc.observer = const AppBlocObserver();
+    try {
+      final appDependency = AppDependency(appEnv: _appEnv);
+      await appDependency.init();
+      runApp(App(appDependency: appDependency));
+    } catch (error, stackTrace) {
+      logger.error('Initialization Dependency failed', error: error, stackTrace: stackTrace);
+    } finally {
+      binding.addPostFrameCallback(
+        (timeStamp) {
+          binding.allowFirstFrame();
+        },
+      );
+    }
   }
 }

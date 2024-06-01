@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
 import 'package:vangram/core/assets/gen/assets.gen.dart';
-import 'package:vangram/core/formatter/formatter.dart';
-import 'package:vangram/features/home/domain/entities/post/post_entity.dart';
+import 'package:vangram/core/utils/extension/extension_on_context.dart';
+import 'package:vangram/core/utils/formatter/formatter.dart';
+import 'package:vangram/features/posts/domain/entities/post/post_entity.dart';
 
 class PostCardWidget extends StatelessWidget {
   const PostCardWidget({

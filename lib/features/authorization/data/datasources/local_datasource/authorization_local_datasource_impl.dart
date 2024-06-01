@@ -6,10 +6,10 @@ import 'package:vangram/features/authorization/data/datasources/local_datasource
 import 'package:vangram/features/authorization/data/models/tokens/tokens_model.dart';
 import 'package:vangram/features/authorization/domain/entities/tokens/tokens_entity.dart';
 
-final class AuthorizationLocalDatasourceImpl implements AuthorizationLocalDatasource {
+final class IAuthorizationLocalDatasource implements AuthorizationLocalDatasource {
   final FlutterSecureStorage _storage;
 
-  AuthorizationLocalDatasourceImpl({required FlutterSecureStorage storage}) : _storage = storage;
+  IAuthorizationLocalDatasource({required FlutterSecureStorage storage}) : _storage = storage;
 
   @override
   Future<void> saveTokens({required TokensEntity tokens}) async {

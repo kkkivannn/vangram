@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vangram/features/home/domain/entities/messages/chat_messages_entity.dart';
-import 'package:vangram/features/home/domain/usecases/get_chat_messages.dart';
+import 'package:vangram/features/chats/domain/entities/messages/chat_messages_entity.dart';
+import 'package:vangram/features/chats/domain/usecases/get_chat_messages.dart';
 
 part 'chat_event.dart';
 part 'chat_state.dart';

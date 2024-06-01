@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vangram/core/usecase/usecase.dart';
-import 'package:vangram/features/home/domain/entities/post/post_entity.dart';
-import 'package:vangram/features/home/domain/usecases/get_posts.dart';
+import 'package:vangram/core/utils/usecase/usecase.dart';
+import 'package:vangram/features/posts/domain/entities/post/post_entity.dart';
+import 'package:vangram/features/posts/domain/usecases/get_posts.dart';
 
 part 'posts_state.dart';
 

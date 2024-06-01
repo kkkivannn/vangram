@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
 import 'package:vangram/core/assets/gen/assets.gen.dart';
-import 'package:vangram/core/formatter/formatter.dart';
-import 'package:vangram/features/home/domain/entities/messages/message_entity.dart';
-import 'package:vangram/features/home/domain/entities/messages/user_message_entity.dart';
+import 'package:vangram/core/utils/extension/extension_on_context.dart';
+import 'package:vangram/core/utils/formatter/formatter.dart';
+import 'package:vangram/features/chats/domain/entities/messages/message_entity.dart';
+import 'package:vangram/features/chats/domain/entities/messages/user_message_entity.dart';
 
 class MessageCardWidget extends StatelessWidget {
   const MessageCardWidget({super.key, required this.user, required this.message});

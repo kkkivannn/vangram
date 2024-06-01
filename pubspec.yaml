@@ -26,6 +26,7 @@ dependencies:
   pinput: ^4.0.0
   image_picker: ^1.1.1
   web_socket_channel: ^2.4.5
+  logging: ^1.2.0
 
 dev_dependencies:
   flutter_test:

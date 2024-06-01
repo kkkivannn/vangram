@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:vangram/core/constants/endpoints.dart';
-import 'package:vangram/core/helpers/models/send_code_model.dart';
-import 'package:vangram/core/helpers/models/send_phone_model.dart';
-import 'package:vangram/core/helpers/models/sign_up.dart';
+import 'package:vangram/core/helpers/models/send_code/send_code_model.dart';
+import 'package:vangram/core/helpers/models/send_phone/send_phone_model.dart';
+import 'package:vangram/core/helpers/models/sign_up/sign_up.dart';
 import 'package:vangram/features/authorization/data/datasources/remote_datasource/authorization_remote_datasource.dart';
 import 'package:vangram/features/authorization/data/models/tokens/tokens_model.dart';
 
-final class AuthorizationRemoteDatasourceImpl implements AuthorizationRemoteDatasource {
+final class IAuthorizationRemoteDatasource implements AuthorizationRemoteDatasource {
   final Dio _dio;
 
-  AuthorizationRemoteDatasourceImpl({required Dio dio}) : _dio = dio;
+  IAuthorizationRemoteDatasource({required Dio dio}) : _dio = dio;
 
   @override
   Future<void> registration({required SignUpModel signUp}) async {

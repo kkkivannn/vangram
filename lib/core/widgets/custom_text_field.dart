@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/formatter/formatter.dart';
+import 'package:vangram/core/utils/formatter/formatter.dart';
 
 final enterNumberFormKey = GlobalKey<FormState>();
 final registrationFormKey = GlobalKey<FormState>();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
+import 'package:vangram/core/utils/extension/extension_on_context.dart';
 import 'package:vangram/core/widgets/post_card.dart';
 import 'package:vangram/features/profile/presentation/profile/controller/profile_bloc.dart';
 

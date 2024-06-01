@@ -6,12 +6,12 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/routes/routes.dart';
 import 'package:vangram/app/theme/app_colors.dart';
 import 'package:vangram/core/assets/gen/assets.gen.dart';
-import 'package:vangram/core/formatter/formatter.dart';
-import 'package:vangram/core/helpers/models/sign_up.dart';
+import 'package:vangram/core/helpers/models/sign_up/sign_up.dart';
+import 'package:vangram/core/utils/extension/extension_on_context.dart';
+import 'package:vangram/core/utils/formatter/formatter.dart';
 import 'package:vangram/core/widgets/custom_text_field.dart';
 import 'package:vangram/features/authorization/presentation/registration/controller/registration_bloc.dart';
 

@@ -3,11 +3,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
-import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/routes/routes.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/formatter/formatter.dart';
-import 'package:vangram/core/helpers/models/send_code_model.dart';
+import 'package:vangram/core/helpers/models/send_code/send_code_model.dart';
+import 'package:vangram/core/utils/extension/extension_on_context.dart';
+import 'package:vangram/core/utils/formatter/formatter.dart';
 import 'package:vangram/features/authorization/presentation/enter_code/controller/enter_code_bloc.dart';
 
 class EnterCodePage extends StatefulWidget {

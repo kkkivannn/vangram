@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vangram/core/usecase/usecase.dart';
-import 'package:vangram/features/home/domain/entities/chats/chat_entity.dart';
-import 'package:vangram/features/home/domain/usecases/get_user_chats.dart';
+import 'package:vangram/core/utils/usecase/usecase.dart';
+import 'package:vangram/features/chats/domain/entities/chats/chat_entity.dart';
+import 'package:vangram/features/chats/domain/usecases/get_user_chats.dart';
 
 part 'chats_event.dart';
 part 'chats_state.dart';
