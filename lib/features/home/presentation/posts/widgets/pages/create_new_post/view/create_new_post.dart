@@ -8,11 +8,11 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/models/post/create_post_model.dart';
+import 'package:vangram/core/assets/gen/assets.gen.dart';
+import 'package:vangram/core/helpers/models/post/create_post_model.dart';
 import 'package:vangram/core/widgets/custom_text_field.dart';
 import 'package:vangram/features/home/presentation/posts/controller/posts_cubit.dart';
 import 'package:vangram/features/home/presentation/posts/widgets/pages/create_new_post/controller/create_new_post_bloc.dart';
-import 'package:vangram/gen/assets.gen.dart';
 
 class CreateNewPostPage extends StatefulWidget {
   const CreateNewPostPage({super.key});

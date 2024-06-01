@@ -9,6 +9,8 @@ class CreateChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    // final chatsBloc = context.read<ChatsBloc>();
+    // final createChatsBloc = context.read<CreateChatBloc>();
     return Scaffold(
       bottomNavigationBar: SafeArea(
         top: false,
@@ -38,7 +40,7 @@ class CreateChatPage extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  const CustomTextField(
+                  CustomTextField(
                     autoFocus: true,
                     maxLines: 14,
                     minLines: 1,

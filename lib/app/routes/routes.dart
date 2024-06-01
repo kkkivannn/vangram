@@ -19,5 +19,5 @@ abstract final class Routes {
 
   static String get createChat => "createChat";
 
-  static String get test => 'test';
+  static String get chat => 'chat';
 }

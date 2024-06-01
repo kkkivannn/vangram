@@ -6,6 +6,8 @@ enum Endpoints {
   refreshToken(path: '/auth/refresh'),
   profile(path: '/user/profile'),
   userPosts(path: '/users_posts'),
+  chats(path: '/chat/chats'),
+  messages(path: '/chat/messages'),
   user(path: '/user');
 
   final String path;

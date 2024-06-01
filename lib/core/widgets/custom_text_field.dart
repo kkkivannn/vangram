@@ -4,44 +4,65 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/formatter/romatter.dart';
+import 'package:vangram/core/formatter/formatter.dart';
 
 final enterNumberFormKey = GlobalKey<FormState>();
 final registrationFormKey = GlobalKey<FormState>();
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField(
-      {Key? key,
-      this.prefixIcon,
-      this.hintText,
-      this.suffixIcon,
-      this.onTap,
-      this.enabled,
-      this.inputFormatter,
-      this.controller,
-      this.readOnly = false,
-      this.validator = _validator,
-      this.maxLines,
-      this.minLines,
-      this.autoFocus = false})
-      : super(key: key);
+  CustomTextField({
+    Key? key,
+    this.prefixIcon,
+    this.hintText,
+    this.suffixIcon,
+    this.onTap,
+    this.enabled,
+    this.inputFormatter,
+    this.controller,
+    this.readOnly = false,
+    this.validator = _validator,
+    this.maxLines,
+    this.minLines,
+    this.autoFocus = false,
+    this.onChanged,
+  })  : contentPadding = const EdgeInsets.symmetric(vertical: 20).copyWith(left: 20, right: 10),
+        super(key: key);
 
-  const CustomTextField.number(
-      {this.prefixIcon,
-      this.suffixIcon,
-      this.hintText,
-      this.onTap,
-      this.enabled,
-      this.readOnly = false,
-      this.inputFormatter,
-      this.controller,
-      this.validator = _validatorNumber,
-      super.key,
-      this.maxLines,
-      this.minLines,
-      this.autoFocus = false});
+  CustomTextField.message({
+    super.key,
+    this.prefixIcon,
+    this.hintText,
+    this.suffixIcon,
+    this.onTap,
+    this.enabled,
+    this.inputFormatter,
+    this.controller,
+    this.readOnly = false,
+    this.validator = _validator,
+    this.maxLines,
+    this.minLines,
+    this.autoFocus = false,
+    this.onChanged,
+  }) : contentPadding = const EdgeInsets.symmetric(vertical: 15).copyWith(left: 20, right: 10);
 
-  const CustomTextField.age({
+  CustomTextField.number({
+    this.prefixIcon,
+    this.suffixIcon,
+    this.hintText,
+    this.onTap,
+    this.enabled,
+    this.readOnly = false,
+    this.inputFormatter,
+    this.controller,
+    this.validator = _validatorNumber,
+    super.key,
+    this.maxLines,
+    this.minLines,
+    this.autoFocus = false,
+    this.onChanged,
+  }) : contentPadding = const EdgeInsets.symmetric(vertical: 20).copyWith(left: 20, right: 10);
+
+  CustomTextField.age({
     this.prefixIcon,
     this.suffixIcon,
     this.hintText,
@@ -55,7 +76,8 @@ class CustomTextField extends StatelessWidget {
     this.maxLines,
     this.minLines,
     this.autoFocus = false,
-  });
+    this.onChanged,
+  }) : contentPadding = const EdgeInsets.symmetric(vertical: 20).copyWith(left: 20, right: 10);
 
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -66,9 +88,11 @@ class CustomTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatter;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final Function(String value)? onChanged;
   final int? maxLines;
   final int? minLines;
   final bool autoFocus;
+  final EdgeInsetsGeometry? contentPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -84,12 +108,13 @@ class CustomTextField extends StatelessWidget {
       inputFormatters: inputFormatter,
       validator: validator,
       cursorErrorColor: AppColors.kPrimaryColor,
+      onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
         fillColor: const Color(0xffF9F9F9),
         isDense: true,
         isCollapsed: true,
-        contentPadding: const EdgeInsets.symmetric(vertical: 20).copyWith(left: 20, right: 10),
+        contentPadding: contentPadding,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         hintText: hintText,

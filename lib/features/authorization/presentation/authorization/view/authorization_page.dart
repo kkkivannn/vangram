@@ -6,11 +6,11 @@ import 'package:go_router/go_router.dart';
 import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/routes/routes.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/formatter/romatter.dart';
-import 'package:vangram/core/models/send_phone_model.dart';
+import 'package:vangram/core/assets/gen/assets.gen.dart';
+import 'package:vangram/core/formatter/formatter.dart';
+import 'package:vangram/core/helpers/models/send_phone_model.dart';
 import 'package:vangram/core/widgets/custom_text_field.dart';
 import 'package:vangram/features/authorization/presentation/authorization/controller/authorization_bloc.dart';
-import 'package:vangram/gen/assets.gen.dart';
 
 class AuthorizationPage extends StatefulWidget {
   const AuthorizationPage({Key? key}) : super(key: key);
@@ -135,7 +135,7 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
                               }
                             },
                             style: theme.elevatedButtonTheme.style!.copyWith(
-                              backgroundColor: MaterialStatePropertyAll(AppColors.kThirdColor),
+                              backgroundColor: WidgetStatePropertyAll(AppColors.kThirdColor),
                             ),
                             child: Text(
                               'Отправить код',

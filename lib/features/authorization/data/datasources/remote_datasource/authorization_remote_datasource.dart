@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:vangram/core/models/send_code_model.dart';
-import 'package:vangram/core/models/send_phone_model.dart';
-import 'package:vangram/core/models/sign_up.dart';
+import 'package:vangram/core/helpers/models/send_code_model.dart';
+import 'package:vangram/core/helpers/models/send_phone_model.dart';
+import 'package:vangram/core/helpers/models/sign_up.dart';
 import 'package:vangram/features/authorization/data/models/tokens/tokens_model.dart';
 
 abstract interface class AuthorizationRemoteDatasource {

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/formatter/romatter.dart';
+import 'package:vangram/core/assets/gen/assets.gen.dart';
+import 'package:vangram/core/formatter/formatter.dart';
 import 'package:vangram/features/home/domain/entities/post/post_entity.dart';
-import 'package:vangram/gen/assets.gen.dart';
 
 class PostCardWidget extends StatelessWidget {
   const PostCardWidget({
@@ -34,6 +34,7 @@ class PostCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
                 backgroundColor: AppColors.kHintColor,
@@ -44,18 +45,21 @@ class PostCardWidget extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Text(
-                '${post.user.name} ${post.user.surname}',
-                style: theme.textTheme.bodyMedium,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${post.user.name} ${post.user.surname}',
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                  Text(
+                    dateFormat.format(post.createdAt),
+                    style: theme.textTheme.bodySmall,
+                  ),
+                ],
               ),
             ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            dateFormat.format(post.createdAt),
-            style: theme.textTheme.bodyMedium!.copyWith(fontSize: 14),
           ),
           const SizedBox(
             height: 10,
@@ -77,27 +81,39 @@ class PostCardWidget extends StatelessWidget {
                 ),
                 Text(
                   post.body,
-                  style: theme.textTheme.bodyLarge,
+                  style: theme.textTheme.bodyMedium,
                 ),
               ],
             ),
           const SizedBox(
-            height: 30,
+            height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SvgPicture.asset(
-                Assets.icons.heart,
-                height: 30,
-                colorFilter: ColorFilter.mode(
-                  AppColors.kBlackColor,
-                  BlendMode.srcIn,
-                ),
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    Assets.icons.heart,
+                    height: 25,
+                    colorFilter: ColorFilter.mode(
+                      AppColors.kBlackColor,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  if (post.countLikes != 0)
+                    Text(
+                      post.countLikes.toString(),
+                      style: theme.textTheme.bodySmall!.copyWith(color: AppColors.kBlackColor),
+                    ),
+                ],
               ),
               SvgPicture.asset(
                 Assets.icons.comment,
-                height: 30,
+                height: 25,
                 colorFilter: ColorFilter.mode(
                   AppColors.kBlackColor,
                   BlendMode.srcIn,

@@ -11,9 +11,6 @@ abstract final class AppTheme {
       elevation: 0,
       backgroundColor: AppColors.kWhiteColor,
       centerTitle: true,
-      iconTheme: IconThemeData(
-        color: AppColors.kPrimaryColor,
-      ),
     ),
     textTheme: TextTheme(
       titleLarge: TextStyle(
@@ -32,16 +29,19 @@ abstract final class AppTheme {
         fontSize: 18,
       ),
     ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.kPrimaryColor,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        shape: MaterialStatePropertyAll(
+        shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
           ),
         ),
-        backgroundColor: MaterialStateProperty.all<Color>(AppColors.kPrimaryColor),
-        elevation: const MaterialStatePropertyAll(0),
-        minimumSize: const MaterialStatePropertyAll(
+        backgroundColor: WidgetStateProperty.all<Color>(AppColors.kPrimaryColor),
+        elevation: const WidgetStatePropertyAll(0),
+        minimumSize: const WidgetStatePropertyAll(
           Size(double.infinity, 60),
         ),
       ),

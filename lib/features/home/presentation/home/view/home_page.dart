@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/gen/assets.gen.dart';
+import 'package:vangram/core/assets/gen/assets.gen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key, required StatefulNavigationShell navigationShell})

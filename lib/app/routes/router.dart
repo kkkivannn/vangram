@@ -4,7 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vangram/app/di/dependency_injection.dart';
 import 'package:vangram/app/routes/routes.dart';
-import 'package:vangram/core/config/config.dart';
+import 'package:vangram/core/constants/config.dart';
 import 'package:vangram/features/authorization/presentation/authorization/controller/authorization_bloc.dart';
 import 'package:vangram/features/authorization/presentation/authorization/view/authorization_page.dart';
 import 'package:vangram/features/authorization/presentation/enter_code/controller/enter_code_bloc.dart';
@@ -14,6 +14,8 @@ import 'package:vangram/features/authorization/presentation/registration/view/re
 import 'package:vangram/features/authorization/presentation/welcome/view/welcome_page.dart';
 import 'package:vangram/features/home/presentation/chats/controller/chats_bloc.dart';
 import 'package:vangram/features/home/presentation/chats/view/chats.dart';
+import 'package:vangram/features/home/presentation/chats/widgets/pages/chat/controller/chat_bloc.dart';
+import 'package:vangram/features/home/presentation/chats/widgets/pages/chat/view/chat.dart';
 import 'package:vangram/features/home/presentation/chats/widgets/pages/create_chat/controller/create_chat_bloc.dart';
 import 'package:vangram/features/home/presentation/chats/widgets/pages/create_chat/view/create_chat.dart';
 import 'package:vangram/features/home/presentation/home/controller/home_bloc.dart';
@@ -88,9 +90,38 @@ abstract class AppRouter {
                 name: Routes.chats,
                 path: '/chats',
                 builder: (context, state) => BlocProvider(
-                  create: (context) => ChatsBloc(),
+                  create: (context) => ChatsBloc(
+                    getUserChats: DependencyInjection.of(context).getUserChats,
+                  )..add(GetChatsEvent()),
                   child: const ChatsPage(),
                 ),
+                routes: [
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: 'create_chat',
+                    name: Routes.createChat,
+                    builder: (context, state) => MultiBlocProvider(
+                      providers: [
+                        BlocProvider(
+                          create: (context) => CreateChatBloc(),
+                        ),
+                        BlocProvider.value(value: state.extra as ChatsBloc),
+                      ],
+                      child: const CreateChatPage(),
+                    ),
+                  ),
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: 'chat',
+                    name: Routes.chat,
+                    builder: (context, state) => BlocProvider(
+                      create: (context) => ChatBloc(
+                        getChatMessages: DependencyInjection.of(context).getChatMessages,
+                      )..add(GetMessagesEvent(chatId: state.extra as int)),
+                      child: const ChatPage(),
+                    ),
+                  ),
+                ],
               )
             ],
           ),
@@ -122,15 +153,6 @@ abstract class AppRouter {
             ],
           ),
         ],
-      ),
-      GoRoute(
-        parentNavigatorKey: _rootNavigatorKey,
-        path: '/create_chat',
-        name: Routes.createChat,
-        builder: (context, state) => BlocProvider(
-          create: (context) => CreateChatBloc(),
-          child: const CreateChatPage(),
-        ),
       ),
       GoRoute(
         path: "/welcome",

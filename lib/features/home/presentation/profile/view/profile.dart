@@ -11,6 +11,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    final profileBloc = context.read<ProfileBloc>();
     return Column(
       children: [
         AppBar(
@@ -32,109 +33,112 @@ class ProfilePage extends StatelessWidget {
                   child: CircularProgressIndicator.adaptive(),
                 );
               }
-              return ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-                children: [
-                  SizedBox(
-                    height: 120,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CircleAvatar(
-                          maxRadius: 60,
-                          backgroundImage: state.profile!.photo == null
-                              ? null
-                              : NetworkImage(
-                                  state.profile!.photo!,
-                                ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  state.profile?.name ?? '-',
-                                  style: theme.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  state.profile?.surname ?? '-',
-                                  style: theme.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              state.profile?.phone ?? '-',
-                              style: theme.textTheme.bodyMedium!.copyWith(
-                                color: AppColors.kBlackGreyColor,
+              return RefreshIndicator.adaptive(
+                onRefresh: () async => profileBloc.add(GetProfileEvent()),
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                  children: [
+                    SizedBox(
+                      height: 120,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CircleAvatar(
+                            maxRadius: 60,
+                            backgroundImage: state.profile!.photo == null
+                                ? null
+                                : NetworkImage(
+                                    state.profile!.photo!,
+                                  ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    state.profile?.name ?? '-',
+                                    style: theme.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    state.profile?.surname ?? '-',
+                                    style: theme.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
-                            ),
-                            const Spacer(),
-                            SizedBox(
-                              height: 50,
-                              width: 150,
-                              child: ElevatedButton(
-                                style: theme.elevatedButtonTheme.style!.copyWith(
-                                  backgroundColor: MaterialStatePropertyAll<Color>(AppColors.kThirdColor),
-                                ),
-                                onPressed: () {},
-                                child: const Text('Редактировать'),
+                              const SizedBox(
+                                height: 10,
                               ),
-                            )
-                          ],
-                        ),
-                      ],
+                              Text(
+                                state.profile?.phone ?? '-',
+                                style: theme.textTheme.bodyMedium!.copyWith(
+                                  color: AppColors.kBlackGreyColor,
+                                ),
+                              ),
+                              const Spacer(),
+                              SizedBox(
+                                height: 50,
+                                width: 150,
+                                child: ElevatedButton(
+                                  style: theme.elevatedButtonTheme.style!.copyWith(
+                                    backgroundColor: WidgetStatePropertyAll<Color>(AppColors.kThirdColor),
+                                  ),
+                                  onPressed: () {},
+                                  child: const Text('Редактировать'),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: AppColors.kThirdColor,
-                        ),
-                        padding: const EdgeInsets.all(10),
-                        child: Text(
-                          'Ваши моменты',
-                          style: theme.textTheme.bodyLarge!.copyWith(
-                            color: AppColors.kWhiteColor,
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: AppColors.kThirdColor,
+                          ),
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            'Ваши моменты',
+                            style: theme.textTheme.bodyLarge!.copyWith(
+                              color: AppColors.kWhiteColor,
+                            ),
                           ),
                         ),
+                        const Spacer(),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemCount: state.posts!.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) => PostCardWidget(
+                        post: state.posts![index],
                       ),
-                      const Spacer(),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ListView.separated(
-                    padding: EdgeInsets.zero,
-                    itemCount: state.posts!.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) => PostCardWidget(
-                      post: state.posts![index],
+                      separatorBuilder: (context, index) => const SizedBox(
+                        height: 10,
+                      ),
                     ),
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 10,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               );
             },
           ),

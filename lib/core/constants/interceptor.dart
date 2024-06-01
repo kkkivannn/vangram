@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:vangram/core/config/endpoints.dart';
+import 'package:vangram/core/constants/endpoints.dart';
 import 'package:vangram/features/authorization/data/datasources/local_datasource/authorization_local_datasource.dart';
 import 'package:vangram/features/authorization/data/models/tokens/tokens_model.dart';
 import 'package:vangram/features/authorization/domain/entities/tokens/tokens_entity.dart';

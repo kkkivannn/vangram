@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vangram/core/models/send_code_model.dart';
+import 'package:vangram/core/helpers/models/send_code_model.dart';
 import 'package:vangram/features/authorization/domain/usecases/send_code.dart';
 
 part 'enter_code_event.dart';

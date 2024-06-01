@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vangram/core/models/post/create_post_model.dart';
+import 'package:vangram/core/helpers/models/post/create_post_model.dart';
 import 'package:vangram/features/home/domain/usecases/create_post.dart';
 
 part 'create_new_post_event.dart';

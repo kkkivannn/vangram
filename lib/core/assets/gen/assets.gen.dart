@@ -55,6 +55,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Image.svg
   String get image => 'assets/icons/Image.svg';
 
+  /// File path: assets/icons/Left.svg
+  String get left => 'assets/icons/Left.svg';
+
   /// File path: assets/icons/Lock.svg
   String get lock => 'assets/icons/Lock.svg';
 
@@ -72,6 +75,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/User.svg
   String get user => 'assets/icons/User.svg';
+
+  /// File path: assets/icons/arrowUp.svg
+  String get arrowUp => 'assets/icons/arrowUp.svg';
 
   /// File path: assets/icons/like_me.svg
   String get likeMe => 'assets/icons/like_me.svg';
@@ -95,12 +101,14 @@ class $AssetsIconsGen {
         filledUser,
         heart,
         image,
+        left,
         lock,
         message,
         right,
         rightCircle,
         settings,
         user,
+        arrowUp,
         likeMe,
         shareMoment,
         shareWithFriends
@@ -120,15 +128,21 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
+  static const String aEnv = '.env';
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+
+  /// List of all assets
+  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,

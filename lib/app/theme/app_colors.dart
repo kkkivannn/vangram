@@ -18,4 +18,6 @@ abstract final class AppColors {
   static Color get kHintColor => const Color(0xffCFD0CD);
 
   static Color get kGreyColor => const Color(0xffF9F9F9);
+
+  static Color get kTimeMessageColor => const Color(0xffDFDFDD);
 }

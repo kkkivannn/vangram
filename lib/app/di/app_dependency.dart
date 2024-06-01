@@ -4,8 +4,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:vangram/app/runner/app_env.dart';
-import 'package:vangram/core/config/config.dart';
-import 'package:vangram/core/config/interceptor.dart';
+import 'package:vangram/core/constants/config.dart';
+import 'package:vangram/core/constants/interceptor.dart';
 import 'package:vangram/core/error/error.dart';
 import 'package:vangram/features/authorization/data/datasources/local_datasource/authorization_local_datasource.dart';
 import 'package:vangram/features/authorization/data/datasources/local_datasource/authorization_local_datasource_impl.dart';
@@ -16,13 +16,15 @@ import 'package:vangram/features/authorization/domain/repositories/authorization
 import 'package:vangram/features/authorization/domain/usecases/send_code.dart';
 import 'package:vangram/features/authorization/domain/usecases/send_phone.dart';
 import 'package:vangram/features/authorization/domain/usecases/sign_up.dart';
-import 'package:vangram/features/home/data/datasources/remote_datasource/home_remote_datasource.dart';
-import 'package:vangram/features/home/data/datasources/remote_datasource/home_remote_datasource_impl.dart';
+import 'package:vangram/features/home/data/datasources/remote/home_remote_datasource.dart';
+import 'package:vangram/features/home/data/datasources/remote/home_remote_datasource_impl.dart';
 import 'package:vangram/features/home/data/repositories/home_repository_impl.dart';
 import 'package:vangram/features/home/domain/repositories/home_repository.dart';
 import 'package:vangram/features/home/domain/usecases/create_post.dart';
+import 'package:vangram/features/home/domain/usecases/get_chat_messages.dart';
 import 'package:vangram/features/home/domain/usecases/get_posts.dart';
 import 'package:vangram/features/home/domain/usecases/get_profile.dart';
+import 'package:vangram/features/home/domain/usecases/get_user_chats.dart';
 import 'package:vangram/features/home/domain/usecases/get_user_posts.dart';
 
 final class AppDependency {
@@ -41,12 +43,15 @@ final class AppDependency {
   late final GetProfile getProfile;
   late final CreatePost createPost;
   late final GetUserPosts getUserPosts;
+  late final GetUserChats getUserChats;
+  late final GetChatMessages getChatMessages;
 
   AppDependency({required this.appEnv});
 
   Future<void> init({required OnError onError, required OnProgress onProgress}) async {
     try {
       await dotenv.load();
+      // await Socket.connectWs();
       onProgress("Env", "Success");
     } on Object catch (error, stackTrace) {
       onError('error', error, stackTrace);
@@ -131,6 +136,8 @@ final class AppDependency {
       getProfile = GetProfile(homeRepository: homeRepository);
       createPost = CreatePost(homeRepository: homeRepository);
       getUserPosts = GetUserPosts(homeRepository: homeRepository);
+      getUserChats = GetUserChats(homeRepository: homeRepository);
+      getChatMessages = GetChatMessages(homeRepository: homeRepository);
       onProgress("SignUp", "Success");
       onProgress("SendCode", "Success");
       onProgress("SendPhone", "Success");
@@ -138,6 +145,8 @@ final class AppDependency {
       onProgress("getProfile", "Success");
       onProgress("createPost", "Success");
       onProgress('getUserPosts', 'Success');
+      onProgress('getUserChats', 'Success');
+      onProgress('getChatMessages', 'Success');
     } on Object catch (error, stackTrace) {
       onError('error', error, stackTrace);
     }

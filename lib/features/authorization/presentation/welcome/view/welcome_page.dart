@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/routes/routes.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/gen/assets.gen.dart';
+import 'package:vangram/core/assets/gen/assets.gen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});

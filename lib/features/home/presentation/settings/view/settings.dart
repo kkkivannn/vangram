@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/config/config.dart';
+import 'package:vangram/core/constants/config.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

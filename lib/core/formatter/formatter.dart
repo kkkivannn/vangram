@@ -11,6 +11,6 @@ MaskTextInputFormatter codeMask = MaskTextInputFormatter(
   filter: {"#": RegExp(r'[0-9]')},
   type: MaskAutoCompletionType.lazy,
 );
-// final DateFormat timeFormat = DateFormat('HH:mm');
+final DateFormat timeFormat = DateFormat('HH:mm');
 // final DateFormat dateFormat = DateFormat('yyyy-MM-dd');
 final DateFormat dateFormat = DateFormat('dd.MM.yyyy');

@@ -9,11 +9,11 @@ import 'package:go_router/go_router.dart';
 import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/routes/routes.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/formatter/romatter.dart';
-import 'package:vangram/core/models/sign_up.dart';
+import 'package:vangram/core/assets/gen/assets.gen.dart';
+import 'package:vangram/core/formatter/formatter.dart';
+import 'package:vangram/core/helpers/models/sign_up.dart';
 import 'package:vangram/core/widgets/custom_text_field.dart';
 import 'package:vangram/features/authorization/presentation/registration/controller/registration_bloc.dart';
-import 'package:vangram/gen/assets.gen.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});

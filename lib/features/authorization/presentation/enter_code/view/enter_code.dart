@@ -6,8 +6,8 @@ import 'package:pinput/pinput.dart';
 import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/routes/routes.dart';
 import 'package:vangram/app/theme/app_colors.dart';
-import 'package:vangram/core/formatter/romatter.dart';
-import 'package:vangram/core/models/send_code_model.dart';
+import 'package:vangram/core/formatter/formatter.dart';
+import 'package:vangram/core/helpers/models/send_code_model.dart';
 import 'package:vangram/features/authorization/presentation/enter_code/controller/enter_code_bloc.dart';
 
 class EnterCodePage extends StatefulWidget {
@@ -150,7 +150,7 @@ class _EnterCodePageState extends State<EnterCodePage> {
                               );
                             },
                             style: theme.elevatedButtonTheme.style!.copyWith(
-                              backgroundColor: MaterialStatePropertyAll(AppColors.kSecondaryColor),
+                              backgroundColor: WidgetStatePropertyAll(AppColors.kSecondaryColor),
                             ),
                             child: Text(
                               'Отправить',
