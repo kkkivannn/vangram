@@ -12,22 +12,22 @@ import 'package:vangram/features/authorization/presentation/enter_code/view/ente
 import 'package:vangram/features/authorization/presentation/registration/controller/registration_bloc.dart';
 import 'package:vangram/features/authorization/presentation/registration/view/registration_page.dart';
 import 'package:vangram/features/authorization/presentation/welcome/view/welcome_page.dart';
-import 'package:vangram/features/home/presentation/chats/controller/chats_bloc.dart';
-import 'package:vangram/features/home/presentation/chats/view/chats.dart';
-import 'package:vangram/features/home/presentation/chats/widgets/pages/chat/controller/chat_bloc.dart';
-import 'package:vangram/features/home/presentation/chats/widgets/pages/chat/view/chat.dart';
-import 'package:vangram/features/home/presentation/chats/widgets/pages/create_chat/controller/create_chat_bloc.dart';
-import 'package:vangram/features/home/presentation/chats/widgets/pages/create_chat/view/create_chat.dart';
+import 'package:vangram/features/chats/presentation/chat/controller/chat_bloc.dart';
+import 'package:vangram/features/chats/presentation/chat/view/chat.dart';
+import 'package:vangram/features/chats/presentation/chats/controller/chats_bloc.dart';
+import 'package:vangram/features/chats/presentation/chats/view/chats.dart';
+import 'package:vangram/features/chats/presentation/create_new_chat/controller/create_chat_bloc.dart';
+import 'package:vangram/features/chats/presentation/create_new_chat/view/create_chat.dart';
 import 'package:vangram/features/home/presentation/home/controller/home_bloc.dart';
 import 'package:vangram/features/home/presentation/home/view/home_page.dart';
-import 'package:vangram/features/home/presentation/posts/controller/posts_cubit.dart';
-import 'package:vangram/features/home/presentation/posts/view/posts.dart';
-import 'package:vangram/features/home/presentation/posts/widgets/pages/create_new_post/controller/create_new_post_bloc.dart';
-import 'package:vangram/features/home/presentation/posts/widgets/pages/create_new_post/view/create_new_post.dart';
-import 'package:vangram/features/home/presentation/profile/controller/profile_bloc.dart';
-import 'package:vangram/features/home/presentation/profile/view/profile.dart';
-import 'package:vangram/features/home/presentation/settings/controller/settings_bloc.dart';
-import 'package:vangram/features/home/presentation/settings/view/settings.dart';
+import 'package:vangram/features/posts/presentation/create_new_post/controller/create_new_post_bloc.dart';
+import 'package:vangram/features/posts/presentation/create_new_post/view/create_new_post.dart';
+import 'package:vangram/features/posts/presentation/posts/controller/posts_cubit.dart';
+import 'package:vangram/features/posts/presentation/posts/view/posts.dart';
+import 'package:vangram/features/profile/presentation/profile/controller/profile_bloc.dart';
+import 'package:vangram/features/profile/presentation/profile/view/profile.dart';
+import 'package:vangram/features/settings/presentation/settings/controller/settings_bloc.dart';
+import 'package:vangram/features/settings/presentation/settings/view/settings.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 

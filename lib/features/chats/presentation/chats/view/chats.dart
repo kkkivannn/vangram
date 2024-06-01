@@ -6,7 +6,7 @@ import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/routes/routes.dart';
 import 'package:vangram/app/theme/app_colors.dart';
 import 'package:vangram/core/assets/gen/assets.gen.dart';
-import 'package:vangram/features/home/presentation/chats/controller/chats_bloc.dart';
+import 'package:vangram/features/chats/presentation/chats/controller/chats_bloc.dart';
 
 class ChatsPage extends StatelessWidget {
   const ChatsPage({super.key});

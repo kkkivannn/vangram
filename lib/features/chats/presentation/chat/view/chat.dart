@@ -6,8 +6,8 @@ import 'package:vangram/app/extension/extension_on_context.dart';
 import 'package:vangram/app/theme/app_colors.dart';
 import 'package:vangram/core/assets/gen/assets.gen.dart';
 import 'package:vangram/core/widgets/custom_text_field.dart';
-import 'package:vangram/features/home/presentation/chats/widgets/pages/chat/controller/chat_bloc.dart';
-import 'package:vangram/features/home/presentation/chats/widgets/pages/chat/widgets/message_card.dart';
+import 'package:vangram/features/chats/presentation/chat/controller/chat_bloc.dart';
+import 'package:vangram/features/chats/presentation/chat/widgets/message_card.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
